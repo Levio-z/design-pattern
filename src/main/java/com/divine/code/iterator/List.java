@@ -8,4 +8,6 @@ public interface List <E>{
     E get(int i);
 
     int size();
+
+    E remove(int i);
 }

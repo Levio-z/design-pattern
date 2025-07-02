@@ -3,7 +3,7 @@ package com.divine.code.iterator;
 public class Demo {
     public static void main(String[] args) {
         // 创建一个 ArrayList 并添加元素
-        ArrayList<String> names = new ArrayList<>();
+        MyArrayList<String> names = new MyArrayList<>();
         names.add("xzg");
         names.add("wang");
         names.add("zheng");
@@ -17,5 +17,11 @@ public class Demo {
             System.out.println(iterator.currentItem());
             iterator.next();
         }
+        // 测试异常
+        iterator = names.iterator();
+        // 遍历并打印元素
+        iterator.next();
+        names.remove(0);
+        iterator.next();
     }
 }

@@ -1,8 +1,9 @@
 package com.divine.code.iterator;
 
-public class ArrayList<E> implements List<E>{
+public class MyArrayList<E> implements List<E>{
 
     private java.util.ArrayList<E> arrayList;
+    private int modCount = 0;
 
     public Iterator iterator() {
         return new ArrayIterator(this);
@@ -13,12 +14,12 @@ public class ArrayList<E> implements List<E>{
         if (arrayList == null) {
             arrayList = new java.util.ArrayList<>();
         }
+        this.modCount++;
         arrayList.add(e);
     }
 
     @Override
     public E get(int i) {
-
         return arrayList.get(i);
     }
 
@@ -28,6 +29,16 @@ public class ArrayList<E> implements List<E>{
             return 0; // 如果 ArrayList 为空，返回 0
         }
         return arrayList.size();
+    }
+
+    @Override
+    public E remove(int i) {
+        this.modCount++;
+        return arrayList.remove(i);
+    }
+
+    public int getModCount() {
+        return modCount;
     }
 
 }
