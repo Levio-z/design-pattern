@@ -1,4 +1,4 @@
-package com.divine.code.strategy.file;
+package com.divine.code.strategy.file.use;
 
 import com.divine.code.strategy.file.factory.SortAlgFactory;
 import com.divine.code.strategy.file.strategy.ISortAlg;
@@ -21,6 +21,7 @@ public class Sorter {
     public void sortFile(String filePath) {
         File file = new File(filePath);
         long fileSize = file.length();
+        extracted(filePath, file, fileSize);
 
         for (AlgRange algRange : algs) {
             if (algRange.inRange(fileSize)) {
@@ -30,6 +31,17 @@ public class Sorter {
         }
 
         throw new IllegalStateException("未匹配到合适的排序算法");
+    }
+
+    private static void extracted(String filePath, File file, long fileSize) {
+        System.out.println("当前路径为: "+System.getProperty("user.dir"));
+        if (!file.exists()) {
+            System.out.println("文件不存在: " + filePath);
+        } else if (!file.isFile()) {
+            System.out.println("目标不是普通文件: " + filePath);
+        } else {
+            System.out.println("文件存在，大小为: " + fileSize + " 字节");
+        }
     }
 
     // 区间绑定的内部类

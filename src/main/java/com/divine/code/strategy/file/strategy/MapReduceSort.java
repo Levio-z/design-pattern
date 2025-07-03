@@ -1,4 +1,4 @@
-package com.divine.code.strategy.order.file.strategy;
+package com.divine.code.strategy.file.strategy;
 
 // MapReduce 排序
 public class MapReduceSort implements ISortAlg {

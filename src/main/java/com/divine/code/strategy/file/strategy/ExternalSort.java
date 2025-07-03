@@ -1,4 +1,4 @@
-package com.divine.code.strategy.order.file.strategy;
+package com.divine.code.strategy.file.strategy;
 
 // 外部排序
 public class ExternalSort implements ISortAlg {
